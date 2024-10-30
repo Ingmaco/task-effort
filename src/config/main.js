@@ -55,9 +55,9 @@ const AT_HOME = process.env.REACT_APP_AT_HOME === "true";
 const MTURK = process.env.REACT_APP_TURK === "true";
 // const MTURK = !jsPsych.turk.turkInfo().outsideTurk;
 let IS_ELECTRON = true;
-let ONLINE = false;
+let ONLINE = true;
 let FIREBASE = process.env.REACT_APP_FIREBASE === "true";
-let PROLIFIC = false;
+let PROLIFIC = true;
 
 try {
   window.require("electron");
@@ -68,8 +68,8 @@ try {
 // if AT_HOME and not in-lab/in-clinic EEG electron version,
 // then assume it's online in the browser
 // with MTurk or Prolific
-ONLINE = AT_HOME && !IS_ELECTRON ? true : false;
-//ONLINE = true;
+ONLINE = AT_HOME && !IS_ELECTRON ? false : false;
+ONLINE = true;
 console.log("ONLINE:", ONLINE);
 
 // note: it _is_ possible to do both firebase & mturk if desired
@@ -85,11 +85,11 @@ if (ONLINE) {
 const PHOTODIODE_ON = false;
 
 // get language file
-const lang = require("../language/en_us.json");
+const lang = require("../language/de_de.modify.json");
 // note: prolific lang is lumped in with en_us.json
 if (MTURK) {
   // if this is mturk, merge in the mturk specific language
-  const mlang = require("../language/en_us.mturk.json");
+  const mlang = require("../language/de_de.modify.json");
   _.merge(lang, mlang);
 }
 

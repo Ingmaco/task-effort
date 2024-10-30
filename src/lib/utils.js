@@ -33,7 +33,7 @@ const randomTrue = () => Math.random() > 0.5;
 const deepCopy = (obj) => JSON.parse(JSON.stringify(obj));
 
 // format a number as a dollar amount
-const formatDollars = (amount) => "$" + parseFloat(amount).toFixed(2);
+const formatDollars = (amount) => "€" + parseFloat(amount).toFixed(2);
 
 // create a pre-trial wait period
 const generateWaitSet = (trial, waitTime) => {
