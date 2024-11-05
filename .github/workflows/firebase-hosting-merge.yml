@@ -11,7 +11,7 @@ name: firebase-deploy-merge-demand
       firebase-env:
         description: Sufix of firebase environment file - 'firebase-lncc', 'firebase-tricamlab'
         required: false
-        default: 'firebase-lncc'
+        default: 'firebase-Apach'
       firebase-channel:
         description: Which firebase-channel to deploy to - 'live', 'qa',
         required: false
