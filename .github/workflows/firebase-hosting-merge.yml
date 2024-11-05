@@ -8,7 +8,7 @@ name: firebase-deploy-merge-demand
       firebase-env:
         description: Sufix of firebase environment file - 'firebase-lncc', 'firebase-tricamlab'
         required: false
-        default: 'firebase-Apach'
+        default: 'firebase-apach'
       firebase-channel:
         description: Which firebase-channel to deploy to - 'live', 'qa',
         required: false
@@ -31,7 +31,7 @@ jobs:
         uses: xom9ikk/dotenv@v1.0.2
         with:
           path: ./env
-          mode: ${{ github.event.inputs.firebase-env || 'firebase-APACH' }}
+          mode: ${{ github.event.inputs.firebase-env || 'firebase-apach' }}
 
       - run: 'npm run build'
       # Deployment starting failing for node 14 - see https://github.com/firebase/firebase-tools/issues/5010
