@@ -34,7 +34,7 @@ jobs:
         uses: xom9ikk/dotenv@v1.0.2
         with:
           path: ./env
-          mode: ${{ github.event.inputs.firebase-env || 'firebase-lncc' }}
+          mode: ${{ github.event.inputs.firebase-env || 'firebase-APACH' }}
 
       - run: 'npm run build'
       # Deployment starting failing for node 14 - see https://github.com/firebase/firebase-tools/issues/5010
@@ -47,4 +47,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_APACH_347DB }}'
           channelId: ${{ github.event.inputs.firebase-channel || 'live' }}
-          projectId: task-effort
+          projectId: apach-347db
