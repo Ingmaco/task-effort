@@ -1,8 +1,5 @@
-import { jsPsych } from "jspsych-react";
-
-const redirectToProlific = (completion_url, duration) => {
-  //   console.log(`${completion_url}`);
-  let url = `${completion_url}`;
+const redirectToProlific = (duration) => {
+  const url = "https://app.prolific.com/submissions/complete?cc=C1EC1IBK";
 
   function redirect(url) {
     setTimeout(() => {
@@ -17,7 +14,7 @@ const redirectToProlific = (completion_url, duration) => {
     response_ends_trial: false,
     trial_duration: duration,
     on_finish: () => {
-      redirect(url, duration);
+      redirect(url);
     },
   };
 };
