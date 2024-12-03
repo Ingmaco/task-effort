@@ -1,3 +1,5 @@
+import { jsPsych } from "jspsych-react";
+
 const redirectToProlific = (duration) => {
   const url = "https://app.prolific.com/submissions/complete?cc=C1EC1IBK";
 
