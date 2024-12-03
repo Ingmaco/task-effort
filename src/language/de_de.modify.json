@@ -52,7 +52,7 @@
     "prob_display_location": "<b>Die Wahrscheinlichkeit, mit der Sie Punkte für einen Durchgang erhalten, wird am <u>unten</u> auf dem Bildschirm angezeigt.</b>",
     "reward_prob_display_event": "Sie sehen die Wahrscheinlichkeit, in dieser Runde Punkte zu gewinnen, und die maximale Punktzahl, während Sie auswählen, welchen Ballon Sie aufblasen möchten.",
     "reward_prob_display_event_np": "Es wird Ihnen gezeigt, wie viele Punkte Sie gewinnen können, während Sie auswählen, welchen Ballon Sie aufblasen möchten.",
-    "pump_keys": "Drücken Sie die Taste    <span class='text-large'><b>Q</b></span>     um den Ballon auf der linken Seite aufzupumpen.<br>Drücken Sie die Taste <span class='text-large'><b>P</b></span>   um den Ballon auf der rechten Seite aufzupumpen.",
+    "pump_keys": "Drücken Sie die Taste  <span class='text-large'><b>Q</b></span>  um den Ballon auf der linken Seite aufzupumpen.<br>Drücken Sie die Taste <span class='text-large'><b>P</b></span>   um den Ballon auf der rechten Seite aufzupumpen.",
     "choice_locked_in": "Wenn Sie einen Ballon ausgewählt haben, können Sie nur diesen Ballon aufpumpen.",
     "ready": "Das Experiment wird jetzt gestartet.<br>Drücken Sie auf Weiter/Next, wenn Sie bereit sind!",
     "blue_practice_pump": "Im nächsten Durchgang versuchen Sie, den <span class='text-blue'><b>BLAUEN</b></span> Ballon zum Platzen zu bringen:<br>Um ihn aufzupumpen, drücken Sie die   <span class='text-large'><b>Q</b></span>   Taste mit dem <b>linken Zeigefinger</b> um zuerst den  <span class='text-blue'><b>blauen</b></span>  Ballon auszuwählen und ihn dann aufzupumpen. <b>Warten Sie, bis der Ballon auf dem Bildschirm erscheint, bevor Sie mit dem Pumpen beginnen",
