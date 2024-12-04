@@ -43,7 +43,7 @@
     "two_balloons": "Es gibt 2 Arten von Luftballons: <br><span class='text-green'><b>GRÜNE</b></span> und <span class='text-blue'><b>BLAUE</b></span> Luftballons.",
     "blue_balloon_points": "<span class='text-blue'><b>BLAUE</b></span> Luftballons werden <b>immer platzen</b> nachdem Sie <span class='text-blue'><b>20 Mal aufgepumt wurden </b></span> und Sie <span class='text-blue'> gewinnen 1 Punkt</b></span>.",
     "green_balloon_points": "<span class='text-green'><b>GRÜNE</b></span> Luftballons <span class='text-green'><b>kann Ihnen mehr Punkte bringen</b></span>, aber werden <span class='text-green'><b>mehr Pumpen benötigen</b></span>.",
-    "green_balloon_pop_time": "<span class='text-green'><b>GRÜNE</b></span> Luftballons werden immer nach <span class='text-green'><b>25 sekunden</b></span> platzen.",
+    "green_balloon_pop_time": "<span class='text-green'><b>GRÜNE</b></span> Luftballons werden immer nach <span class='text-green'><b>25 Sekunden</b></span> platzen.",
     "green_balloon_pump_bonus": "Wenn Sie weiterhin pumpen, wird der <span class='text-green'><b>GRÜNE</b></span> Luftballon nachdem er die Spitze innerhalb des <span class='text-green'><b>25-Sekunden-Zeitlimits</b></span>, desto größer wird der Ballon und desto mehr <u>Bonuspunkte</u> erhältst du.<br></br>Wenn Sie den  <span class='text-green'><b>GRÜNEN</b></span> Ballon aufpumpen und er die Spitze nicht innerhalb des <span class='text-green'><b>25-Sekunden-Limits</b></span> erreicht, erhalten Sie einen <b>Teil</b> der Punkte für das Aufpumpen des Ballons. <br></br>(Beispiel: Wenn die Gesamtpunktzahl, die du für einen Ballon erreichen kannst, 2 Punkte beträgt und du den Ballon auf halbem Weg zum Spike aufpumpst, erhältst du 1 Punkt)<br></br>",
     "green_balloon_variable_points_pumps": "Für den <span class='text-green'><b>GRÜNEN</b></span> Ballon kann sich die Anzahl der benötigten Pumpstöße und die Anzahl der Punkte, die Sie gewinnen können <span class='text-green'><b><u>in jeder Runde ändern</u></b></span>. Die Anzahl der benötigten Pumphübe und Punkte sind unter dem <span class='text-green'><b>GRÜNEN</b></span> Ballon angegeben.",
     "blue_balloon_constant_points_pumps": "Für den <span class='text-blue'><b>BLAUEN</b></span> Ballon bleibt der mögliche Gewinn  <span class='text-blue'><b><u>immer</u></b></span> (<span class='text-blue'><b>1 Punkt</b></span>),<br> und es werden immer <span class='text-blue'><b>20 mal Pumpen </b></span>benötigt.",
@@ -56,7 +56,7 @@
     "choice_locked_in": "Wenn Sie einen Ballon ausgewählt haben, können Sie nur diesen Ballon aufpumpen.",
     "ready": "Das Experiment wird jetzt gestartet.<br>Drücken Sie auf Weiter/Next, wenn Sie bereit sind!",
     "blue_practice_pump": "Im nächsten Durchgang versuchen Sie, den <span class='text-blue'><b>BLAUEN</b></span> Ballon zum Platzen zu bringen:<br>Um ihn aufzupumpen, drücken Sie die   <span class='text-large'><b>Q</b></span>   Taste mit dem <b>linken Zeigefinger</b> um zuerst den  <span class='text-blue'><b>blauen</b></span>  Ballon auszuwählen und ihn dann aufzupumpen. <b>Warten Sie, bis der Ballon auf dem Bildschirm erscheint, bevor Sie mit dem Pumpen beginnen",
-    "green_practice_pump": "Im nächsten Durchgang versuchen Sie, den <span class='text-green'><b>GRÜNEN</b></span> Ballon zum Platzen zu bringen.:<br>Um ihn aufzupumpen, drücken Sie die    <span class='text-large'><b>P</b></span>    Taste mit dem <b>rechten Zeigefinger</b> um zuerst den <span class='text-green'><b>grünen</b></span> Ballon auszuwählen und ihn dann aufzupumpen. <b>Warten Sie, bis der Ballon auf dem Bildschirm erscheint, bevor Sie mit dem Pumpen beginnen",
+    "green_practice_pump": "Im nächsten Durchgang versuchen Sie, den <span class='text-green'><b>GRÜNEN</b></span> Ballon zum Platzen zu bringen:<br>Um ihn aufzupumpen, drücken Sie die    <span class='text-large'><b>P</b></span>    Taste mit dem <b>rechten Zeigefinger</b> um zuerst den <span class='text-green'><b>grünen</b></span> Ballon auszuwählen und ihn dann aufzupumpen. <b>Warten Sie, bis der Ballon auf dem Bildschirm erscheint, bevor Sie mit dem Pumpen beginnen",
     "wait_pump": "<b>Warten Sie, bis der Ballon auf dem Bildschirm erscheint, bevor Sie anfangen zu pumpen.",
     "missed_choice": "Sie haben <b>6 Sekunden</b> Zeit, um Ihre Entscheidung zu treffen. Wenn Sie nicht rechtzeitig entscheiden, verlieren Sie die Möglichkeit, in dieser Runde Punkte zu gewinnen, und müssen eine neue Runde beginnen."
   },
@@ -100,8 +100,8 @@
     "practice1": "Sie beginnen mit <b>dem Übungsversuch 1/3</b> in",
     "practice2": "Sie beginnen mit <b>dem Übungsversuch 2/3</b> in",
     "practice3": "Sie beginnen mit <b>dem Übungsversuch 3/3</b> in",
-    "expt1": "Sie beginnen mit<b>dem Hauptblock </b> in",
-    "post_break_resume": "Sie werden die Aufgabe in",
+    "expt1": "Sie beginnen mit <b>dem Hauptblock </b> in",
+    "post_break_resume": "Die Aufgabe wird fortgesetzt in",
     "redirect_to_prolific": "Das Experiment ist beendet.<br></br>Sie werden nun auf die Prolific-Website weitergeleitet, um die Studie als abgeschlossen zu betrachten.<br></br>Bitte warten ..."
   },
   "cumulative_rew": {
