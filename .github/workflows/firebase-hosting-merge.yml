@@ -17,14 +17,18 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v2
       # Rewrite "git:" repo urls to use "https:" instead
       - name: Rewrite "git:" repo urls to use "https:" instead.
         run: git config --global url."https://github.com/".insteadOf "git://github.com/"
       - name: Use Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v1
         with:
+<<<<<<< HEAD
           node-version: 18.x
+=======
+          node-version: 14.x
+>>>>>>> parent of 3ed964f (Try to use node 20.x)
       - run: 'npm install' 
 
       - name: Load .env file for build settings
@@ -35,4 +39,14 @@ jobs:
 
       - run: 'npm run build'
       # Deployment starting failing for node 14 - see https://github.com/firebase/firebase-tools/issues/5010
-      
+      - name: Setup node 16
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_APACH_347DB }}'
+          channelId: ${{ github.event.inputs.firebase-channel || 'live' }}
+          projectId: task-effort-apach
+
