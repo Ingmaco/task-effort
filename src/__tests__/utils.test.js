@@ -50,14 +50,14 @@ describe("generic utility functions", function () {
   });
 
   it("should format numbers as dollars", function () {
-    assert.equal(util.formatDollars(2), "$2.00", "integer to dollars");
-    assert.equal(util.formatDollars(2.5), "$2.50", "one decimal to dollars");
-    assert.equal(util.formatDollars(2.66), "$2.66", "two decimal to dollars");
+    assert.equal(util.formatDollars(2), "£2.00", "integer to dollars");
+    assert.equal(util.formatDollars(2.5), "£2.50", "one decimal to dollars");
+    assert.equal(util.formatDollars(2.66), "£2.66", "two decimal to dollars");
     assert.equal(
       util.formatDollars(2.123),
-      "$2.12",
+      "£2.12",
       "three decimal round down"
     );
-    assert.equal(util.formatDollars(2.456), "$2.46", "three decimal round up");
+    assert.equal(util.formatDollars(2.456), "£2.46", "three decimal round up");
   });
 });
