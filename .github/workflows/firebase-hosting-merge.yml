@@ -50,3 +50,5 @@ jobs:
           channelId: ${{ github.event.inputs.firebase-channel || 'live' }}
           projectId: task-effort-apach
 
+          firebaseToolsVersion: '12.9.1'  # Added this line
+
