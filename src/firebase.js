@@ -44,6 +44,25 @@ const addToFirebase = (data) => {
     .set(data)
 };
 
+// Add this function to your firebase.js
+const getUrlParameters = () => {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    participantID: params.get('participantID'),
+    studyID: params.get('studyID'),
+    SESSION_ID: params.get('SESSION_ID')
+  };
+};
+
+// Function to save these specific parameters
+const saveUrlParameters = () => {
+  const params = getUrlParameters();
+  return db.collection(collectionName).doc(params.participantID || 'unknown').set({
+    ...params,
+    timestamp: new Date()
+  });
+};
+
 // Export types that exists in Firestore
 // This is not always necessary, but it's used in other examples
 const { TimeStamp, GeoPoint } = firebase.firestore;
@@ -54,6 +73,8 @@ export {
   createFirebaseDocument,
   addToFirebase,
   createFirebaseDocumentRandom,
+  getUrlParameters,
+  saveUrlParameters
 };
 
 export default firebase;
