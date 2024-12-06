@@ -122,3 +122,84 @@ Generated sources: esm/index.esm.js [184B] esm/package.json [17B] index.cjs.js [
  {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1206 16:51:23.211536   89402 engine.go:148] [engine.Service /emulator/task-effort 375f] ExecuteGraphqlRead IntrospectionQuery: succeeded. \n"}}
 [debug] [2024-12-06T15:51:23.310Z] I1206 16:51:23.310793   89402 engine.go:148] [engine.Service /emulator/task-effort 375f] ExecuteGraphqlRead IntrospectionQuery: succeeded. 
  {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1206 16:51:23.310793   89402 engine.go:148] [engine.Service /emulator/task-effort 375f] ExecuteGraphqlRead IntrospectionQuery: succeeded. \n"}}
+[debug] [2024-12-06T15:52:44.514Z] [Firebase Plugin] Value of process.env.MONOSPACE_ENV: undefined
+[debug] [2024-12-06T15:52:44.519Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2024-12-06T15:52:44.522Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-06T15:52:44.522Z] > authorizing via signed-in user (leonxxl18@gmail.com)
+[debug] [2024-12-06T15:52:44.523Z] Checked if tokens are valid: true, expires at: 1733503775771
+[debug] [2024-12-06T15:52:44.523Z] Checked if tokens are valid: true, expires at: 1733503775771
+[debug] [2024-12-06T15:52:44.523Z] [Firebase Plugin] User found:  leonxxl18@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2024-12-06T15:52:44.524Z] Checked if tokens are valid: true, expires at: 1733503775771
+[debug] [2024-12-06T15:52:44.526Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2024-12-06T15:52:44.532Z] [Firebase Plugin] Value of process.env.MONOSPACE_ENV: undefined
+[debug] [2024-12-06T15:52:44.533Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2024-12-06T15:52:44.533Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-06T15:52:44.533Z] > authorizing via signed-in user (leonxxl18@gmail.com)
+[debug] [2024-12-06T15:52:44.535Z] Checked if tokens are valid: true, expires at: 1733503775771
+[debug] [2024-12-06T15:52:44.535Z] [Firebase Plugin] User found:  leonxxl18@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2024-12-06T15:52:44.535Z] Checked if tokens are valid: true, expires at: 1733503775771
+[debug] [2024-12-06T15:52:44.535Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2024-12-06T15:52:45.010Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2024-12-06T15:52:45.011Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2024-12-06T15:52:45.362Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2024-12-06T15:52:45.363Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2024-12-06T15:53:25.126Z] [Firebase Plugin] Received emulators started notification. Running detection.
+[debug] [2024-12-06T15:53:25.130Z] >>> [apiv2][query] GET http://127.0.0.1:4400/emulators [none]
+[debug] [2024-12-06T15:53:25.158Z] <<< [apiv2][status] GET http://127.0.0.1:4400/emulators 200
+[debug] [2024-12-06T15:53:25.158Z] <<< [apiv2][body] GET http://127.0.0.1:4400/emulators {"hub":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"name":"hub","host":"127.0.0.1","port":4400},"ui":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"name":"ui","host":"127.0.0.1","port":4000},"logging":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"name":"logging","host":"127.0.0.1","port":4500},"firestore":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"name":"firestore","host":"127.0.0.1","port":8080,"pid":89564,"reservedPorts":[9150],"webSocketHost":"127.0.0.1","webSocketPort":9150},"database":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":9000}],"name":"database","host":"127.0.0.1","port":9000,"pid":89578},"hosting":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":5002}],"name":"hosting","host":"127.0.0.1","port":5002},"dataconnect":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":9399},{"address":"::1","family":"IPv6","port":9399}],"name":"dataconnect","host":"127.0.0.1","port":9399,"pid":89584,"timeout":10000}}
+[debug] [2024-12-06T15:55:26.313Z] >>> [apiv2][query] GET http://127.0.0.1:4400/emulators [none]
+[debug] [2024-12-06T15:55:26.402Z] <<< [apiv2][status] GET http://127.0.0.1:4400/emulators 200
+[debug] [2024-12-06T15:55:26.402Z] <<< [apiv2][body] GET http://127.0.0.1:4400/emulators {"hub":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"name":"hub","host":"127.0.0.1","port":4400},"ui":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"name":"ui","host":"127.0.0.1","port":4000},"logging":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"name":"logging","host":"127.0.0.1","port":4500},"firestore":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"name":"firestore","host":"127.0.0.1","port":8080,"pid":89564,"reservedPorts":[9150],"webSocketHost":"127.0.0.1","webSocketPort":9150},"database":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":9000}],"name":"database","host":"127.0.0.1","port":9000,"pid":89578},"hosting":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":5002}],"name":"hosting","host":"127.0.0.1","port":5002},"dataconnect":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":9399},{"address":"::1","family":"IPv6","port":9399}],"name":"dataconnect","host":"127.0.0.1","port":9399,"pid":89584,"timeout":10000}}
+[debug] [2024-12-06T16:00:25.470Z] [Firebase Plugin] Activating Firebase extension.
+[info] [Firebase Plugin] Starting Data Connect toolkit on port 50003
+[debug] [2024-12-06T16:00:30.111Z] I1206 17:00:30.099691   89883 control.go:45] [engine.Service /emulator/task-effort fd48] UpdateSchema(): done sources: schema/schema.gql [1384B] 
+I1206 17:00:30.108582   89883 control.go:73] [engine.Service /emulator/task-effort fd48] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1206 17:00:30.099691   89883 control.go:45] [engine.Service /emulator/task-effort fd48] UpdateSchema(): done sources: schema/schema.gql [1384B] \nI1206 17:00:30.108582   89883 control.go:73] [engine.Service /emulator/task-effort fd48] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] \n"}}
+[debug] [2024-12-06T16:00:30.112Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2024-12-06T16:00:30.112Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2024-12-06T16:00:30.112Z] Starting Data Connect Emulator with command {"binary":"/Users/ingmar/.cache/firebase/emulators/dataconnect-emulator-1.7.4","args":["--logtostderr","-v=2","dev","--listen=localhost:50003","--config_dir=/Users/ingmar/task-effort/dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting Data Connect Emulator with command {\"binary\":\"/Users/ingmar/.cache/firebase/emulators/dataconnect-emulator-1.7.4\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=localhost:50003\",\"--config_dir=/Users/ingmar/task-effort/dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: Data Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"Data Connect Emulator logging to dataconnect-debug.log"}}
+[debug] [2024-12-06T16:00:30.138Z] [Firebase Plugin] Value of process.env.MONOSPACE_ENV: undefined
+[debug] [2024-12-06T16:00:30.139Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2024-12-06T16:00:30.139Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-06T16:00:30.140Z] > authorizing via signed-in user (leonxxl18@gmail.com)
+[debug] [2024-12-06T16:00:30.140Z] [Firebase Plugin] Value of process.env.MONOSPACE_ENV: undefined
+[debug] [2024-12-06T16:00:30.140Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2024-12-06T16:00:30.140Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-06T16:00:30.140Z] > authorizing via signed-in user (leonxxl18@gmail.com)
+[debug] [2024-12-06T16:00:30.142Z] >>> [apiv2][query] GET http://127.0.0.1:4400/emulators [none]
+[debug] [2024-12-06T16:00:30.143Z] Checked if tokens are valid: true, expires at: 1733503775771
+[debug] [2024-12-06T16:00:30.143Z] Checked if tokens are valid: true, expires at: 1733503775771
+[debug] [2024-12-06T16:00:30.144Z] Checked if tokens are valid: true, expires at: 1733503775771
+[debug] [2024-12-06T16:00:30.144Z] Checked if tokens are valid: true, expires at: 1733503775771
+[debug] [2024-12-06T16:00:30.144Z] [Firebase Plugin] User found:  leonxxl18@gmail.com
+[debug] [2024-12-06T16:00:30.144Z] [Firebase Plugin] User found:  leonxxl18@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2024-12-06T16:00:30.145Z] Checked if tokens are valid: true, expires at: 1733503775771
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2024-12-06T16:00:30.145Z] Checked if tokens are valid: true, expires at: 1733503775771
+[debug] [2024-12-06T16:00:30.146Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2024-12-06T16:00:30.146Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2024-12-06T16:00:30.273Z] <<< [apiv2][status] GET http://127.0.0.1:4400/emulators 200
+[debug] [2024-12-06T16:00:30.274Z] <<< [apiv2][body] GET http://127.0.0.1:4400/emulators {"hub":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"name":"hub","host":"127.0.0.1","port":4400},"ui":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"name":"ui","host":"127.0.0.1","port":4000},"logging":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"name":"logging","host":"127.0.0.1","port":4500},"firestore":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"name":"firestore","host":"127.0.0.1","port":8080,"pid":89564,"reservedPorts":[9150],"webSocketHost":"127.0.0.1","webSocketPort":9150},"database":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":9000}],"name":"database","host":"127.0.0.1","port":9000,"pid":89578},"hosting":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":5002}],"name":"hosting","host":"127.0.0.1","port":5002},"dataconnect":{"listen":[{"address":"127.0.0.1","family":"IPv4","port":9399},{"address":"::1","family":"IPv6","port":9399}],"name":"dataconnect","host":"127.0.0.1","port":9399,"pid":89584,"timeout":10000}}
+[debug] [2024-12-06T16:00:30.391Z] I1206 17:00:30.374120   89884 load.go:37] Reloading schema and connectors...
+I1206 17:00:30.388716   89884 control.go:45] [engine.Service /emulator/task-effort a1d1] UpdateSchema(): done sources: schema/schema.gql [1384B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1206 17:00:30.374120   89884 load.go:37] Reloading schema and connectors...\nI1206 17:00:30.388716   89884 control.go:45] [engine.Service /emulator/task-effort a1d1] UpdateSchema(): done sources: schema/schema.gql [1384B] \n"}}
+[debug] [2024-12-06T16:00:30.397Z] I1206 17:00:30.397438   89884 control.go:73] [engine.Service /emulator/task-effort a1d1] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1206 17:00:30.397438   89884 control.go:73] [engine.Service /emulator/task-effort a1d1] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] \n"}}
+[debug] [2024-12-06T16:00:30.423Z] I1206 17:00:30.418244   89884 codegen.go:82] [connector "default" javascriptSdk] Generating sources into "/Users/ingmar/task-effort/dataconnect-generated/js/default-connector"
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1206 17:00:30.418244   89884 codegen.go:82] [connector \"default\" javascriptSdk] Generating sources into \"/Users/ingmar/task-effort/dataconnect-generated/js/default-connector\"\n"}}
+[debug] [2024-12-06T16:00:30.427Z] I1206 17:00:30.427526   89884 collector.go:107] schema extensions wrote into "/Users/ingmar/task-effort/dataconnect/.dataconnect/schema"
+Generated sources: prelude.gql [65151B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1206 17:00:30.427526   89884 collector.go:107] schema extensions wrote into \"/Users/ingmar/task-effort/dataconnect/.dataconnect/schema\"\nGenerated sources: prelude.gql [65151B] \n"}}
+[debug] [2024-12-06T16:00:30.430Z] I1206 17:00:30.429679   89884 collector.go:107] connector "default" javascriptSdk wrote into "/Users/ingmar/task-effort/dataconnect-generated/js/default-connector"
+Generated sources: index.d.ts [264B] esm/index.esm.js [184B] esm/package.json [17B] index.cjs.js [225B] package.json [634B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1206 17:00:30.429679   89884 collector.go:107] connector \"default\" javascriptSdk wrote into \"/Users/ingmar/task-effort/dataconnect-generated/js/default-connector\"\nGenerated sources: index.d.ts [264B] esm/index.esm.js [184B] esm/package.json [17B] index.cjs.js [225B] package.json [634B] \n"}}
+[debug] [2024-12-06T16:00:30.439Z] I1206 17:00:30.438646   89884 installsdk.go:76] Running command: /Users/ingmar/.nvm/versions/node/v20.13.1/bin/npm install file:dataconnect-generated/js/default-connector
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1206 17:00:30.438646   89884 installsdk.go:76] Running command: /Users/ingmar/.nvm/versions/node/v20.13.1/bin/npm install file:dataconnect-generated/js/default-connector\n"}}
+[debug] [2024-12-06T16:00:30.762Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2024-12-06T16:00:30.763Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2024-12-06T16:00:31.206Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2024-12-06T16:00:31.206Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
