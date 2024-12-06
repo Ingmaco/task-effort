@@ -1,9 +1,14 @@
-I1206 17:00:30.374120   89884 load.go:37] Reloading schema and connectors...
-I1206 17:00:30.388716   89884 control.go:45] [engine.Service /emulator/task-effort a1d1] UpdateSchema(): done sources: schema/schema.gql [1384B] 
-I1206 17:00:30.397438   89884 control.go:73] [engine.Service /emulator/task-effort a1d1] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] 
-I1206 17:00:30.418244   89884 codegen.go:82] [connector "default" javascriptSdk] Generating sources into "/Users/ingmar/task-effort/dataconnect-generated/js/default-connector"
-I1206 17:00:30.427526   89884 collector.go:107] schema extensions wrote into "/Users/ingmar/task-effort/dataconnect/.dataconnect/schema"
+I1206 16:51:21.288008   89402 load.go:37] Reloading schema and connectors...
+I1206 16:51:21.303633   89402 control.go:45] [engine.Service /emulator/task-effort 375f] UpdateSchema(): done sources: schema/schema.gql [1384B] 
+I1206 16:51:21.312778   89402 control.go:73] [engine.Service /emulator/task-effort 375f] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] 
+I1206 16:51:21.327115   89402 codegen.go:82] [connector "default" javascriptSdk] Generating sources into "/Users/ingmar/task-effort/dataconnect-generated/js/default-connector"
+I1206 16:51:21.332721   89402 collector.go:107] schema extensions wrote into "/Users/ingmar/task-effort/dataconnect/.dataconnect/schema"
 Generated sources: prelude.gql [65151B] 
-I1206 17:00:30.429679   89884 collector.go:107] connector "default" javascriptSdk wrote into "/Users/ingmar/task-effort/dataconnect-generated/js/default-connector"
-Generated sources: index.d.ts [264B] esm/index.esm.js [184B] esm/package.json [17B] index.cjs.js [225B] package.json [634B] 
-I1206 17:00:30.438646   89884 installsdk.go:76] Running command: /Users/ingmar/.nvm/versions/node/v20.13.1/bin/npm install file:dataconnect-generated/js/default-connector
+I1206 16:51:21.333410   89402 collector.go:107] connector "default" javascriptSdk wrote into "/Users/ingmar/task-effort/dataconnect-generated/js/default-connector"
+Generated sources: esm/index.esm.js [184B] esm/package.json [17B] index.cjs.js [225B] package.json [634B] index.d.ts [264B] 
+I1206 16:51:21.339013   89402 installsdk.go:76] Running command: /Users/ingmar/.nvm/versions/node/v20.13.1/bin/npm install file:dataconnect-generated/js/default-connector
+E1206 16:51:23.028908   89402 installsdk.go:78] Failed to install package: exit status 1
+I1206 16:51:23.029576   89402 load.go:115] Finished reloading
+I1206 16:51:23.039965   89402 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:50002
+I1206 16:51:23.211536   89402 engine.go:148] [engine.Service /emulator/task-effort 375f] ExecuteGraphqlRead IntrospectionQuery: succeeded. 
+I1206 16:51:23.310793   89402 engine.go:148] [engine.Service /emulator/task-effort 375f] ExecuteGraphqlRead IntrospectionQuery: succeeded. 
