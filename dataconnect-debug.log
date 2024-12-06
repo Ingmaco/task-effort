@@ -7,3 +7,8 @@ Generated sources: prelude.gql [65151B]
 I1206 17:00:30.429679   89884 collector.go:107] connector "default" javascriptSdk wrote into "/Users/ingmar/task-effort/dataconnect-generated/js/default-connector"
 Generated sources: index.d.ts [264B] esm/index.esm.js [184B] esm/package.json [17B] index.cjs.js [225B] package.json [634B] 
 I1206 17:00:30.438646   89884 installsdk.go:76] Running command: /Users/ingmar/.nvm/versions/node/v20.13.1/bin/npm install file:dataconnect-generated/js/default-connector
+E1206 17:00:38.944714   89884 installsdk.go:78] Failed to install package: exit status 1
+I1206 17:00:38.945453   89884 load.go:115] Finished reloading
+I1206 17:00:38.955839   89884 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:50003
+I1206 17:00:39.150282   89884 engine.go:148] [engine.Service /emulator/task-effort a1d1] ExecuteGraphqlRead IntrospectionQuery: succeeded. 
+I1206 17:00:39.321996   89884 engine.go:148] [engine.Service /emulator/task-effort a1d1] ExecuteGraphqlRead IntrospectionQuery: succeeded. 
