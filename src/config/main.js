@@ -68,7 +68,7 @@ try {
 // if AT_HOME and not in-lab/in-clinic EEG electron version,
 // then assume it's online in the browser
 // with MTurk or Prolific
-ONLINE = AT_HOME && !IS_ELECTRON ? false : false;
+ONLINE = AT_HOME && !IS_ELECTRON ? true : false;
 ONLINE = true;
 console.log("ONLINE:", ONLINE);
 
