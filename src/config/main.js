@@ -52,7 +52,7 @@ const keys = {
 
 // all the possible environments for the task:
 const AT_HOME = process.env.REACT_APP_AT_HOME === "true";
-const MTURK = process.env.REACT_APP_TURK === "true";
+const MTURK = false;
 // const MTURK = !jsPsych.turk.turkInfo().outsideTurk;
 let IS_ELECTRON = true;
 let ONLINE = true;
