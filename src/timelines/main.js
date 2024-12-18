@@ -58,7 +58,7 @@ const onlineTimeline = MTURK
       buildCountdown(lang.countdown.practice1, 3),
       taskBlock(practiceBlock1),
       greenPracticeInstructions(),
-      buildCountdown(lang.countdown.practice2, 3),
+     /* buildCountdown(lang.countdown.practice2, 3),
       taskBlock(practiceBlock2),
       realPracticeInstructions(),
       buildCountdown(lang.countdown.practice3, 3),
@@ -67,7 +67,7 @@ const onlineTimeline = MTURK
       postPracticeInstructions(),
       buildCountdown(lang.countdown.expt1, 3),
       taskBlock(exptBlock1),
-      showPayment(5000, exptBlock1),
+      */showPayment(5000, exptBlock1),
       experimentEnd(2000),
     ]
   : // PROLIFIC VERSION OF THE TASK BELOW:
@@ -80,7 +80,7 @@ const onlineTimeline = MTURK
       buildCountdown(lang.countdown.practice1, 3),
       taskBlock(practiceBlock1),
       greenPracticeInstructions(),
-      buildCountdown(lang.countdown.practice2, 3),
+    /*  buildCountdown(lang.countdown.practice2, 3),
       taskBlock(practiceBlock2),
       realPracticeInstructions(),
       buildCountdown(lang.countdown.practice3, 3),
@@ -89,8 +89,9 @@ const onlineTimeline = MTURK
       postPracticeInstructions(),
       buildCountdown(lang.countdown.expt1, 3),
       taskBlock(exptBlock1),
-      showPayment(5000, exptBlock1),
+     */  showPayment(5000, exptBlock1),
       buildCountdown(lang.countdown.redirect_to_prolific, 5),
+     
       redirectToProlific(),
     ];
 
