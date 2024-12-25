@@ -1,13 +1,5 @@
-import { initializeApp } from 'firebase/app';
-import { 
-  getFirestore, 
-  collection, 
-  setDoc,
-  addDoc,
-  getDocs,
-  getDoc,
-  DocumentReference 
-} from 'firebase/firestore';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 import { getProlificId } from "./lib/utils";
 require("dotenv").config();
 
@@ -25,9 +17,13 @@ const config = {
   measurementId: process.env.REACT_APP_measurementId,
 };
 
+// Firebase initialisieren
+if (!firebase.apps.length) {
+  firebase.initializeApp(config);
+}
+
 // Firestore initialisieren
-const app = initializeApp(config);
-const db = getFirestore(app);
+const db = firebase.firestore();
 
 // Add data to db
 const createFirebaseDocument = async () => {
@@ -37,8 +33,8 @@ const createFirebaseDocument = async () => {
       throw new Error("Keine Prolific ID gefunden");
     }
 
-    const collectionRef = collection(db, collectionName);
-    await addDoc(collectionRef, {
+    const collectionRef = db.collection(collectionName);
+    await collectionRef.add({
       prolificId,
       dateCreated: new Date(),
       platform: 'prolific'
@@ -62,10 +58,10 @@ const createFirebaseDocumentRandom = () => {
 const addToFirebase = async (data) => {
   try {
     const prolificId = getProlificId();
-    const docRef = doc(db, collectionName, prolificId);
-    const trialRef = doc(docRef, "data", `trial_${data.trial_index}`);
+    const docRef = db.collection(collectionName).doc(prolificId);
+    const trialRef = docRef.collection("data").doc(`trial_${data.trial_index}`);
     
-    await setDoc(trialRef, {
+    await trialRef.set({
       ...data,
       prolificId,
       timestamp: new Date()
@@ -99,8 +95,8 @@ const saveUrlParameters = () => {
 
 const testFirestoreAccess = async () => {
   try {
-    const testRef = doc(db, collectionName, 'test');
-    await setDoc(testRef, {
+    const testRef = db.collection(collectionName).doc('test');
+    await testRef.set({
       test: true,
       timestamp: new Date()
     });
