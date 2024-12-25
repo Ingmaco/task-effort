@@ -28,22 +28,22 @@ const db = firebase.firestore();
 // Add data to db
 const createFirebaseDocument = async () => {
   try {
-    const prolificId = getProlificId();
-    if (!prolificId) {
+    const params = getUrlParameters();
+    if (!params?.prolificId) {
       throw new Error("Keine Prolific ID gefunden");
     }
 
-    const collectionRef = db.collection(collectionName);
-    await collectionRef.add({
-      prolificId,
-      dateCreated: new Date(),
+    const docRef = db.collection(collectionName).doc(params.prolificId);
+    await docRef.set({
+      ...params,
+      dateCreated: firebase.firestore.FieldValue.serverTimestamp(),
       platform: 'prolific'
     });
-    
-    console.log("Dokument erstellt mit Prolific ID:", prolificId);
-    return prolificId;
+
+    console.log("Dokument erstellt:", params.prolificId);
+    return params.prolificId;
   } catch (error) {
-    console.error("Fehler beim Erstellen:", error);
+    console.error("Fehler:", error);
     throw error;
   }
 };
@@ -77,10 +77,17 @@ const addToFirebase = async (data) => {
 // Add this function to your firebase.js
 const getUrlParameters = () => {
   const params = new URLSearchParams(window.location.search);
+  const prolificId = params.get('PROLIFIC_PID');
+  
+  if (!prolificId) {
+    console.warn('Keine PROLIFIC_PID in URL gefunden');
+    return null;
+  }
+  
   return {
-    participantID: params.get('participantID'),
-    studyID: params.get('studyID'),
-    SESSION_ID: params.get('SESSION_ID')
+    prolificId,
+    studyId: params.get('STUDY_ID') || 'unknown',
+    sessionId: params.get('SESSION_ID') || 'unknown'
   };
 };
 
