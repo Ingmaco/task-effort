@@ -1,5 +1,13 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import { 
+  getFirestore, 
+  collection, 
+  setDoc,
+  addDoc,
+  getDocs,
+  getDoc,
+  DocumentReference 
+} from 'firebase/firestore';
 import { getProlificId } from "./lib/utils";
 require("dotenv").config();
 
@@ -29,12 +37,13 @@ const createFirebaseDocument = async () => {
       throw new Error("Keine Prolific ID gefunden");
     }
 
-    const docRef = doc(db, collectionName, prolificId);
-    await setDoc(docRef, {
+    const collectionRef = collection(db, collectionName);
+    await addDoc(collectionRef, {
       prolificId,
       dateCreated: new Date(),
       platform: 'prolific'
     });
+    
     console.log("Dokument erstellt mit Prolific ID:", prolificId);
     return prolificId;
   } catch (error) {
