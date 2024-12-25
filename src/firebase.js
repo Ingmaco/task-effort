@@ -77,27 +77,42 @@ const addToFirebase = async (data) => {
 // Add this function to your firebase.js
 const getUrlParameters = () => {
   const params = new URLSearchParams(window.location.search);
-  const prolificId = params.get('PROLIFIC_PID');
+  const docId = params.get('PROLIFIC_PID') || params.get('participantID');
   
-  if (!prolificId) {
-    console.warn('Keine PROLIFIC_PID in URL gefunden');
+  if (!docId) {
+    console.warn('Keine ID in URL gefunden');
     return null;
   }
   
   return {
-    prolificId,
-    studyId: params.get('STUDY_ID') || 'unknown',
-    sessionId: params.get('SESSION_ID') || 'unknown'
+    id: docId,
+    studyId: params.get('STUDY_ID') || params.get('studyID') || 'unknown',
+    sessionId: params.get('SESSION_ID') || 'unknown',
+    source: params.get('PROLIFIC_PID') ? 'prolific' : 'url'
   };
 };
 
 // Function to save these specific parameters
-const saveUrlParameters = () => {
-  const params = getUrlParameters();
-  return db.collection(collectionName).doc(params.participantID || 'unknown').set({
-    ...params,
-    timestamp: new Date()
-  });
+const saveUrlParameters = async () => {
+  try {
+    const params = getUrlParameters();
+    
+    if (!params || !params.id) {
+      throw new Error('Keine gültige ID gefunden');
+    }
+
+    await db.collection(collectionName).doc(params.id).set({
+      ...params,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      created: new Date().toISOString()
+    });
+
+    console.log('Daten gespeichert für ID:', params.id);
+    return params.id;
+  } catch (error) {
+    console.error('Fehler beim Speichern:', error);
+    throw error;
+  }
 };
 
 const testFirestoreAccess = async () => {
