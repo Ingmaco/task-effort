@@ -1,9 +1,16 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-import { getProlificId } from "./lib/utils";
 require("dotenv").config();
 
 const collectionName = "db_pilot_test";
+
+// ID-Validierung und Extraktion
+const getValidId = () => {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('PROLIFIC_PID') || 
+         params.get('participantID') || 
+         `user_${Date.now()}`;
+};
 
 // Firebase Konfiguration
 const config = {
@@ -25,25 +32,30 @@ if (!firebase.apps.length) {
 // Firestore initialisieren
 const db = firebase.firestore();
 
-// Add data to db
+// Firestore Dokument erstellen
 const createFirebaseDocument = async () => {
   try {
-    const params = getUrlParameters();
-    if (!params?.prolificId) {
-      throw new Error("Keine Prolific ID gefunden");
+    const id = getValidId();
+    
+    if (!id) {
+      throw new Error("Keine gültige ID gefunden");
     }
 
-    const docRef = db.collection(collectionName).doc(params.prolificId);
+    console.log('Verwende ID:', id);
+
+    const docRef = db.collection(collectionName).doc(id);
     await docRef.set({
-      ...params,
-      dateCreated: firebase.firestore.FieldValue.serverTimestamp(),
-      platform: 'prolific'
+      id: id,
+      studyId: new URLSearchParams(window.location.search).get('studyID') || 'unknown',
+      sessionId: new URLSearchParams(window.location.search).get('SESSION_ID') || 'unknown',
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      source: id.startsWith('user_') ? 'generated' : 'url'
     });
 
-    console.log("Dokument erstellt:", params.prolificId);
-    return params.prolificId;
+    console.log('Dokument erstellt:', id);
+    return id;
   } catch (error) {
-    console.error("Fehler:", error);
+    console.error('Fehler beim Erstellen:', error);
     throw error;
   }
 };
