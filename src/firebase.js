@@ -1,31 +1,47 @@
-import firebase from "firebase";
+import { initializeApp } from 'firebase/app';
+import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import { getProlificId } from "./lib/utils";
 require("dotenv").config();
-console.log(process.env)
 
 const collectionName = "db_pilot_test";
+
+// Firebase Konfiguration
 const config = {
   apiKey: process.env.REACT_APP_apiKey,
   authDomain: process.env.REACT_APP_authDomain,
   databaseURL: process.env.REACT_APP_databaseURL,
-  projectId:  process.env.REACT_APP_projectId || "no-firebase",
+  projectId: process.env.REACT_APP_projectId || "no-firebase",
   storageBucket: process.env.REACT_APP_storageBucket,
   messagingSenderId: process.env.REACT_APP_messagingSenderId,
   appId: process.env.REACT_APP_appId,
   measurementId: process.env.REACT_APP_measurementId,
 };
 
-// Get a Firestore instance
-const db = firebase.initializeApp(config).firestore();
+// Firestore initialisieren
+const app = initializeApp(config);
+const db = getFirestore(app);
 
 // Add data to db
-const createFirebaseDocument = (uniqueId) => {
-  db.collection(collectionName).doc(uniqueId).set({
-    uniqueId,
-    dateCreated: new Date(),
-  }); 
+const createFirebaseDocument = async () => {
+  try {
+    const prolificId = getProlificId();
+    if (!prolificId) {
+      throw new Error("Keine Prolific ID gefunden");
+    }
+
+    const docRef = doc(db, collectionName, prolificId);
+    await setDoc(docRef, {
+      prolificId,
+      dateCreated: new Date(),
+      platform: 'prolific'
+    });
+    console.log("Dokument erstellt mit Prolific ID:", prolificId);
+    return prolificId;
+  } catch (error) {
+    console.error("Fehler beim Erstellen:", error);
+    throw error;
+  }
 };
-
-
 
 // create a document in the collection with a random id
 const createFirebaseDocumentRandom = () => {
@@ -34,14 +50,23 @@ const createFirebaseDocumentRandom = () => {
   });
 };
 
-const addToFirebase = (data) => {
-  const uniqueId = data.uniqueId;
-
-  db.collection(collectionName)
-    .doc(uniqueId ?? "undefined")
-    .collection("data")
-    .doc(`trial_${data.trial_index}`)
-    .set(data)
+const addToFirebase = async (data) => {
+  try {
+    const prolificId = getProlificId();
+    const docRef = doc(db, collectionName, prolificId);
+    const trialRef = doc(docRef, "data", `trial_${data.trial_index}`);
+    
+    await setDoc(trialRef, {
+      ...data,
+      prolificId,
+      timestamp: new Date()
+    });
+    
+    console.log("Daten gespeichert für Trial:", data.trial_index);
+  } catch (error) {
+    console.error("Fehler beim Speichern:", error);
+    throw error;
+  }
 };
 
 // Add this function to your firebase.js
@@ -63,6 +88,21 @@ const saveUrlParameters = () => {
   });
 };
 
+const testFirestoreAccess = async () => {
+  try {
+    const testRef = doc(db, collectionName, 'test');
+    await setDoc(testRef, {
+      test: true,
+      timestamp: new Date()
+    });
+    console.log("Firestore Zugriff OK");
+    return true;
+  } catch (error) {
+    console.error("Firestore Zugriff fehlgeschlagen:", error);
+    return false;
+  }
+};
+
 // Export types that exists in Firestore
 // This is not always necessary, but it's used in other examples
 const { TimeStamp, GeoPoint } = firebase.firestore;
@@ -74,7 +114,8 @@ export {
   addToFirebase,
   createFirebaseDocumentRandom,
   getUrlParameters,
-  saveUrlParameters
+  saveUrlParameters,
+  testFirestoreAccess
 };
 
 export default firebase;

@@ -1,8 +1,21 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow write;
+    match /db_pilot_test/{userId} {
+      // Hauptdokument: Jeder kann schreiben, nur Admin lesen
+      allow create, update: if 
+        request.resource.data.prolificId != null &&
+        request.resource.data.dateCreated is timestamp;
+      
+      allow read: if request.auth != null && 
+                 request.auth.token.admin == true;
+
+      // Unterdokumente (trials): Gleiche Regeln
+      match /data/{trialId} {
+        allow write: if true;
+        allow read: if request.auth != null && 
+                   request.auth.token.admin == true;
+      }
     }
   }
 }
