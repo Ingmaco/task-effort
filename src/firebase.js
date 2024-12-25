@@ -1,61 +1,35 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
+import firebase from "firebase";
 require("dotenv").config();
+console.log(process.env)
 
 const collectionName = "db_pilot_test";
-
-// ID-Validierung und Extraktion
-const getValidId = () => {
-  const params = new URLSearchParams(window.location.search);
-  return params.get('PROLIFIC_PID') || 
-         params.get('participantID') || 
-         `user_${Date.now()}`;
-};
-
-// Firebase Konfiguration
 const config = {
   apiKey: process.env.REACT_APP_apiKey,
   authDomain: process.env.REACT_APP_authDomain,
   databaseURL: process.env.REACT_APP_databaseURL,
-  projectId: process.env.REACT_APP_projectId || "no-firebase",
+  projectId:  process.env.REACT_APP_projectId || "no-firebase",
   storageBucket: process.env.REACT_APP_storageBucket,
   messagingSenderId: process.env.REACT_APP_messagingSenderId,
   appId: process.env.REACT_APP_appId,
   measurementId: process.env.REACT_APP_measurementId,
 };
 
-// Firebase initialisieren
+// Firebase 7.x Initialisierung
 if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }
-
-// Firestore initialisieren
 const db = firebase.firestore();
 
-// Firestore Dokument erstellen
-const createFirebaseDocument = async () => {
+// Add data to db - Firebase 7.x Syntax
+const createFirebaseDocument = async (uniqueId) => {
   try {
-    const id = getValidId();
-    
-    if (!id) {
-      throw new Error("Keine gültige ID gefunden");
-    }
-
-    console.log('Verwende ID:', id);
-
-    const docRef = db.collection(collectionName).doc(id);
-    await docRef.set({
-      id: id,
-      studyId: new URLSearchParams(window.location.search).get('studyID') || 'unknown',
-      sessionId: new URLSearchParams(window.location.search).get('SESSION_ID') || 'unknown',
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      source: id.startsWith('user_') ? 'generated' : 'url'
+    await db.collection(collectionName).doc(uniqueId).set({
+      uniqueId,
+      dateCreated: firebase.firestore.FieldValue.serverTimestamp(),
     });
-
-    console.log('Dokument erstellt:', id);
-    return id;
+    return { success: true, id: uniqueId };
   } catch (error) {
-    console.error('Fehler beim Erstellen:', error);
+    console.error('Fehler:', error);
     throw error;
   }
 };
@@ -67,79 +41,14 @@ const createFirebaseDocumentRandom = () => {
   });
 };
 
-const addToFirebase = async (data) => {
-  try {
-    const prolificId = getProlificId();
-    const docRef = db.collection(collectionName).doc(prolificId);
-    const trialRef = docRef.collection("data").doc(`trial_${data.trial_index}`);
-    
-    await trialRef.set({
-      ...data,
-      prolificId,
-      timestamp: new Date()
-    });
-    
-    console.log("Daten gespeichert für Trial:", data.trial_index);
-  } catch (error) {
-    console.error("Fehler beim Speichern:", error);
-    throw error;
-  }
-};
+const addToFirebase = (data) => {
+  const uniqueId = data.uniqueId;
 
-// Add this function to your firebase.js
-const getUrlParameters = () => {
-  const params = new URLSearchParams(window.location.search);
-  const docId = params.get('PROLIFIC_PID') || params.get('participantID');
-  
-  if (!docId) {
-    console.warn('Keine ID in URL gefunden');
-    return null;
-  }
-  
-  return {
-    id: docId,
-    studyId: params.get('STUDY_ID') || params.get('studyID') || 'unknown',
-    sessionId: params.get('SESSION_ID') || 'unknown',
-    source: params.get('PROLIFIC_PID') ? 'prolific' : 'url'
-  };
-};
-
-// Function to save these specific parameters
-const saveUrlParameters = async () => {
-  try {
-    const params = getUrlParameters();
-    
-    if (!params || !params.id) {
-      throw new Error('Keine gültige ID gefunden');
-    }
-
-    await db.collection(collectionName).doc(params.id).set({
-      ...params,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      created: new Date().toISOString()
-    });
-
-    console.log('Daten gespeichert für ID:', params.id);
-    return params.id;
-  } catch (error) {
-    console.error('Fehler beim Speichern:', error);
-    throw error;
-  }
-};
-
-const testFirestoreAccess = async () => {
-  try {
-    const testRef = db.collection(collectionName).doc('test');
-    await testRef.set({
-      test: true,
-      timestamp: new Date()
-    });
-    console.log("Firestore Zugriff OK");
-    return true;
-  } catch (error) {
-    console.error("Firestore Zugriff fehlgeschlagen:", error);
-    return false;
-  }
+  db.collection(collectionName)
+    .doc(uniqueId ?? "undefined")
+    .collection("data")
+    .doc(`trial_${data.trial_index}`)
+    .set(data)
 };
 
 // Export types that exists in Firestore
@@ -152,9 +61,6 @@ export {
   createFirebaseDocument,
   addToFirebase,
   createFirebaseDocumentRandom,
-  getUrlParameters,
-  saveUrlParameters,
-  testFirestoreAccess
 };
 
 export default firebase;
