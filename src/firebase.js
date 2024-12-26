@@ -1,26 +1,34 @@
-import firebase from "firebase";
-require("dotenv").config();
-console.log(process.env)
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+require('dotenv').config();
 
 const collectionName = "db_pilot_test";
+
+// Firebase Konfiguration
 const config = {
   apiKey: process.env.REACT_APP_apiKey,
   authDomain: process.env.REACT_APP_authDomain,
   databaseURL: process.env.REACT_APP_databaseURL,
-  projectId:  process.env.REACT_APP_projectId || "no-firebase",
+  projectId: process.env.REACT_APP_projectId || "no-firebase",
   storageBucket: process.env.REACT_APP_storageBucket,
   messagingSenderId: process.env.REACT_APP_messagingSenderId,
   appId: process.env.REACT_APP_appId,
   measurementId: process.env.REACT_APP_measurementId,
 };
 
-// Firebase 7.x Initialisierung
-if (!firebase.apps.length) {
-  firebase.initializeApp(config);
+// Firebase Initialisierung mit Error Handling
+let db;
+try {
+  if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+  }
+  db = firebase.firestore();
+  console.log('Firebase initialisiert');
+} catch (error) {
+  console.error('Firebase Fehler:', error);
+  throw error;
 }
-const db = firebase.firestore();
 
-// Add data to db - Firebase 7.x Syntax
 const createFirebaseDocument = async (uniqueId) => {
   try {
     await db.collection(collectionName).doc(uniqueId).set({
@@ -61,6 +69,7 @@ export {
   createFirebaseDocument,
   addToFirebase,
   createFirebaseDocumentRandom,
+  collectionName,
 };
 
 export default firebase;
