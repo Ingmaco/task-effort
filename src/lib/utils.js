@@ -99,7 +99,7 @@ const getProlificId = (data) => {
 
   const prolificId = getQueryVariable("PROLIFIC_PID");
   //const sessionId = getQueryVariable("SESSION_ID");
-  const studyId = getQueryVariable("STUDY_ID");
+  //const studyId = getQueryVariable("STUDY_ID");
 
   console.log(prolificId);
   const uniqueId = `${prolificId}`;
@@ -129,4 +129,6 @@ export {
   getUserId,
   getTurkUniqueId,
   getProlificId,
+  getUrlParameter,
+  getAllParticipantInfo
 };
