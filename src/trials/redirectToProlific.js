@@ -1,24 +1,18 @@
 import { jsPsych } from "jspsych-react";
+import { lang } from "../config/main";
 
-const redirectToProlific = (completion_url, duration) => {
-  //   console.log(`${completion_url}`);
-  let url = `${completion_url}`;
-
-  function redirect(url) {
-    setTimeout(() => {
-      window.location.replace(url);
-    }, duration);
-  }
+const redirectToProlific = () => {
+  const completion_url = lang.prolific.completion_code_url;
+  const duration = 2000;
 
   return {
     type: "html_keyboard_response",
+    stimulus: lang.countdown.redirect_to_prolific,
     choices: jsPsych.NO_KEYS,
-    stimulus: "",
-    response_ends_trial: false,
     trial_duration: duration,
     on_finish: () => {
-      redirect(url, duration);
-    },
+      window.location.href = completion_url;
+    }
   };
 };
 
