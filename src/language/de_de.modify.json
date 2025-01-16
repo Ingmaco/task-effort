@@ -37,7 +37,7 @@
     "welcome": "Herzlich willkommen!",
     "choose_btwn_two_balloons": "In diesem Experiment haben Sie die Wahl, einen von zwei Luftballons aufzublasen, indem Sie die entsprechenden Tasten auf der Tastatur drücken: <span class='text-large'><b>Q und P</b></span>",
     "your_job": "Ihre Aufgabe ist es, die Luftballons aufzupumpen, um Punkte zu gewinnen!",
-    "pop_balloon_earn_money": "Die Punkte, die du durch das Platzen eines Ballons erhältst, werden mit einem '+'-Zeichen vor dem Ballon angezeigt (d.h. <span class='text-large'><b>+1 </b></span>).",
+    "pop_balloon_earn_money": "Die Punkte, die du durch das Platzen eines Ballons erhältst, werden mit einem '+'-Zeichen vor dem Ballon angezeigt (d.h. <span class='text-large'><b>+1 £ </b></span>).",
     "points_to_bonus_conversion": "Für jede <span class='text-large'><b>75 Punkte</b></span> die Sie im Spiel gewinnen, erhalten Sie <span class='text-large'><b>1 GBP</b></span> am Ende des Experiments.",
     "cumulative_rewards": "Am Ende jedes Versuchs wird Ihnen die Gesamtzahl der erreichten Punkte angezeigt.",
     "two_balloons": "Es gibt 2 Arten von Luftballons: <br><span class='text-green'><b>GRÜNE</b></span> und <span class='text-blue'><b>BLAUE</b></span> Luftballons.",
