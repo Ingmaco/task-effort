@@ -86,7 +86,7 @@
       "job": "Die Aufgabe ist es, den Ballon auszuwählen, der aufgepumpt werden soll.",
       "blue_req_20": "Der <span class='text-blue'><b>BLAUE</b></span> Ballon benötigt IMMER 20 mal Pumpen, um den Stachel zu erreichen, und kann 1 Punkt geben.",
       "green_vary_bonus": "Der <span class='text-green'><b>GRÜNE</b></span> Ballon wird in den benötigten Pumpmengen <u>VARIEREN</u> und kann Bonuspunkte geben.",
-      "twenty_five_secs_green": " Du hast 25 Sekunden Zeit, den <span class='text-green'><b>GRÜNEN</b></span> Ballon aufzupumpen, um alle möglichen Punkte zu erhalten.",
+      "twenty_five_secs_green": " Sie haben 25 Sekunden Zeit, den <span class='text-green'><b>GRÜNEN</b></span> Ballon aufzupumpen, um alle möglichen Punkte zu erhalten.",
       "bonus_green_spike": "Du kannst Bonuspunkte für den <span class='text-green'><b>GRÜNEN</b></span> Ballon bekommen, wenn du ihn über den Stachel hinaus aufpumpst"
     },
     "answer_opts": {
