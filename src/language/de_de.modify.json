@@ -70,7 +70,7 @@
     "prompt": {
       "more_pumps": "Welcher Ballon braucht mehr Pumpen? <span class='text-blue'><b>BLAU</b></span> oder <span class='text-green'><b>GRÜN</b></span>?",
       "reward_certainty_reach_spike": "Richtig oder falsch: Sie erhalten <u>IMMER</u> Punkte, wenn Sie den Spike erreichen.",
-      "bonus_blue": "Richtig oder falsch: Du kannst Bonuspunkte für den <span class='text-blue'><b>BLAUEN</b></span> Ballon bekommen.",
+      "bonus_blue": "Richtig oder falsch: Sie können Bonuspunkte für den <span class='text-blue'><b>BLAUEN</b></span> Ballon bekommen.",
       "bonus_blue_np": "Richtig oder falsch: Du kannst Bonuspunkte für den  <span class='text-blue'><b>BLAUEN</b></span> Ballon bekommen.",
       "bonus_green": "Richtig oder falsch: Du kannst Bonuspunkte für den  <span class='text-green'><b>GRÜNEN</b></span> Ballon bekommen.",
       "bonus_green_np":"Richtig oder falsch: Du kannst Bonuspunkte für den <span class='text-green'><b>GRÜNEN</b></span> Ballon bekommen.",
