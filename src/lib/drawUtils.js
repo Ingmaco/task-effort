@@ -13,7 +13,7 @@ function drawText(ctx, lang, cx, cy, langColor){
     var lineHeight = canvasSettings.lineHeight;
     ctx.lineHeight = lineHeight;
     let text = lang // should be %
-    // let text2 = `${pumpsRequired} pumps`
+    // let text2 = `${pumpsRequired} pumpen`
     ctx.fillText(text, cx + lineHeight, cy);
     // ctx.fillText(text2, cx - lineHeight, cy + (lineHeight * 2));
 }
@@ -32,8 +32,8 @@ function drawEffort(ctx, points, pumpsRequired, cx, cy, high_effort){
     ctx.fillStyle = color;
     var lineHeight = canvasSettings.lineHeight;
     ctx.lineHeight = lineHeight;
-    let text = `${points} pts`
-    let text2 = `${pumpsRequired} pumps`
+    let text = `${points} punkte`
+    let text2 = `${pumpsRequired} pumpen`
     ctx.fillText(text, cx + lineHeight, cy);
     ctx.fillText(text2, cx - lineHeight, cy + (lineHeight * 2));
 }
