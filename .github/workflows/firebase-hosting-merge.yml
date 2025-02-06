@@ -18,13 +18,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      
+      # Python 2.7 Setup
+      - name: Setup Python 2.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: '2.7'
+      
+      # Node.js Setup
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      
+      # Python-Konfiguration für node-gyp
+      - name: Configure Python for node-gyp
+        run: |
+          python --version
+          npm config set python $(which python)
+      
       # Rewrite "git:" repo urls to use "https:" instead
       - name: Rewrite "git:" repo urls to use "https:" instead.
         run: git config --global url."https://github.com/".insteadOf "git://github.com/"
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-
           node-version: 14.x
 
       - run: 'npm install' 
