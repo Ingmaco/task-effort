@@ -18,13 +18,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      
+      # Python 2.7 Setup
+      - name: Setup Python 2.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: '2.7'
+          
+      # Python konfigurieren
+      - name: Configure Python
+        run: |
+          python --version
+          which python
+          npm config set python $(which python)
+
       # Rewrite "git:" repo urls to use "https:" instead
       - name: Rewrite "git:" repo urls to use "https:" instead.
         run: git config --global url."https://github.com/".insteadOf "git://github.com/"
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-
           node-version: 14.x
 
       - run: 'npm install' 
@@ -35,7 +48,7 @@ jobs:
           path: ./env
           mode: ${{ github.event.inputs.firebase-env || 'firebase-apach' }}
 
-      - run: 'npm run build'
+      - run: 'npm run build
       # Deployment starting failing for node 14 - see https://github.com/firebase/firebase-tools/issues/5010
       - name: Setup node 16
         uses: actions/setup-node@v1
