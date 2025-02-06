@@ -24,16 +24,10 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
+
           node-version: 16.x
 
-      # Build Tools für fibers installieren
-      - name: Install build dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y python3 make g++ build-essential
-
-      # npm install mit legacy-peer-deps
-      - run: npm install --legacy-peer-deps
+      - run: 'npm install' 
 
       - name: Load .env file for build settings
         uses: xom9ikk/dotenv@v1.0.2
