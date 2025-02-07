@@ -33,4 +33,3 @@ package-lock.json
 .vs
 .vscode
 .firebase/logs/vsce-debug.log
-.firebase/logs/vsce-debug.log
