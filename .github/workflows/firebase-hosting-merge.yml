@@ -22,12 +22,10 @@ jobs:
       # Python 2.7 Setup mit Docker
       - name: Setup Python 2.7
         run: |
-          sudo apt-get update
-          sudo apt-get install -y python2.7
-          sudo ln -sf /usr/bin/python2.7 /usr/bin/python
-          python --version
-          which python
-          echo "PYTHON_PATH=$(which python)" >> $GITHUB_ENV
+          docker pull python:2.7
+          docker run -d --name py27 python:2.7 tail -f /dev/null
+          docker exec py27 python --version
+          echo "PYTHON_PATH=$(docker exec py27 which python)" >> $GITHUB_ENV
       
       # Build Dependencies
       - name: Install build essentials
