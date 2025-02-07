@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      # Python 2.7 Setup
+      # Python Setup vor node-gyp
       - name: Setup Python 2.7 with Docker
         run: |
           docker pull python:2.7-slim
@@ -28,25 +28,18 @@ jobs:
           docker exec py27 pip install setuptools wheel
           PYTHON_PATH=$(docker exec py27 which python)
           echo "PYTHON_PATH=$PYTHON_PATH" >> $GITHUB_ENV
-
-      # Build Dependencies
-      - name: Install build essentials
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y build-essential
       
-      # Node.js Setup mit spezifischer node-gyp Version
-      - name: Use Node.js
+      # Node.js Setup
+      - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
           node-version: '14.21.3'
       
-      # node-gyp Konfiguration
+      # node-gyp explizit konfigurieren
       - name: Configure node-gyp
         run: |
           npm install -g node-gyp@6.1.0
-          docker exec py27 python --version
-          npm config set python "${{ env.PYTHON_PATH }}"
+          npm config set python ${{ env.PYTHON_PATH }}
           npm config list
       
       # Rewrite "git:" repo urls to use "https:" instead
