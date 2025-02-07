@@ -19,22 +19,23 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      # Python Setup mit Docker
+      # Python 2.7 Setup mit persistentem Docker Container
       - name: Setup Python 2.7
-        uses: docker://python:2.7-slim
-        with:
-          args: python --version
+        run: |
+          docker run -d --name python27 python:2.7-slim tail -f /dev/null
+          docker exec python27 python --version
+          PYTHON_PATH=$(docker exec python27 which python)
+          echo "PYTHON_PATH=$PYTHON_PATH" >> $GITHUB_ENV
       
-      # Node.js Setup mit Python-Pfad
+      # Node.js Setup
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
       
+      # node-gyp Konfiguration
       - name: Configure node-gyp
-        run: |
-          docker run python:2.7-slim python --version
-          npm config set python $(docker run python:2.7-slim which python)
+        run: npm config set python ${{ env.PYTHON_PATH }}
       
       # Rewrite "git:" repo urls to use "https:" instead
       - name: Rewrite "git:" repo urls to use "https:" instead.
