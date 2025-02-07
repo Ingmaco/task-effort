@@ -20,12 +20,12 @@ jobs:
       - uses: actions/checkout@v2
       
       # Python 2.7 Setup mit Docker
-      - name: Setup Python 2.7 using Docker
+      - name: Setup Python 2.7
         run: |
-          docker pull python:2.7-slim
-          docker run -d --name py27 python:2.7-slim tail -f /dev/null
-          PYTHON_PATH=$(docker exec py27 which python)
-          echo "PYTHON_PATH=$PYTHON_PATH" >> $GITHUB_ENV
+          docker pull python:2.7
+          docker run -d --name py27 python:2.7 tail -f /dev/null
+          docker exec py27 python --version
+          echo "PYTHON_PATH=$(docker exec py27 which python)" >> $GITHUB_ENV
       
       # Build Dependencies
       - name: Install build essentials
@@ -38,7 +38,7 @@ jobs:
           node-version: 14.x
       
       # node-gyp Konfiguration
-      - name: Configure node-gyp to use Python 2.7
+      - name: Configure node-gyp
         run: |
           npm install -g node-gyp@6.1.0
           npm config set python ${{ env.PYTHON_PATH }}
