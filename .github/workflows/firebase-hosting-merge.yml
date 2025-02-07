@@ -20,14 +20,10 @@ jobs:
       - uses: actions/checkout@v2
       
       # Python 2.7 Setup
-      - name: Setup Python 2.7 Container
-        uses: docker://python:2.7
-      
-      - name: Install Python 2.7
-        run: |
-          sudo apt-get update
-          sudo apt-get install python2.7
-          sudo ln -sf /usr/bin/python2.7 /usr/bin/python
+      - name: Setup Python 2.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: '2.7'
       
       # Node.js Setup
       - name: Use Node.js
