@@ -19,22 +19,27 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      # Python Setup mit Docker
-      - name: Setup Python 2.7
-        uses: docker://python:2.7-slim
-        with:
-          args: python --version
+      # Python 2.7 Setup
+      - name: Setup Python 2.7 Container
+        uses: docker://python:2.7
       
-      # Node.js Setup mit Python-Pfad
+      - name: Install Python 2.7
+        run: |
+          sudo apt-get update
+          sudo apt-get install python2.7
+          sudo ln -sf /usr/bin/python2.7 /usr/bin/python
+      
+      # Node.js Setup
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
       
-      - name: Configure node-gyp
+      # Python-Konfiguration für node-gyp
+      - name: Configure Python for node-gyp
         run: |
-          docker run python:2.7-slim python --version
-          npm config set python $(docker run python:2.7-slim which python)
+          python --version
+          npm config set python $(which python)
       
       # Rewrite "git:" repo urls to use "https:" instead
       - name: Rewrite "git:" repo urls to use "https:" instead.
