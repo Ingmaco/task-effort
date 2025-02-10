@@ -18,35 +18,42 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      # Rewrite "git:" repo urls to use "https:" instead
-      - name: Rewrite "git:" repo urls to use "https:" instead.
-        run: git config --global url."https://github.com/".insteadOf "git://github.com/"
+      
+      # Python 3 Setup
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      # Node.js 16 Setup (kompatibel mit allen Paketen)
       - name: Use Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-
-          node-version: 14.x
-
-      - run: 'npm install' 
-
-      - name: Load .env file for build settings
-        uses: xom9ikk/dotenv@v1.0.2
-        with:
-          path: ./env
-          mode: ${{ github.event.inputs.firebase-env || 'firebase-apach' }}
-
-      - run: 'npm run build'
-      # Deployment starting failing for node 14 - see https://github.com/firebase/firebase-tools/issues/5010
-      - name: Setup node 16
-        uses: actions/setup-node@v1
-        with:
-          node-version: 16.x
+          node-version: '16.x'
+          
+      # Build Tools installieren
+      - name: Install build essentials
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential
+          python -m pip install --upgrade pip setuptools wheel
+          
+      # Dependencies installieren
+      - name: Install dependencies
+        run: |
+          npm config set python python3
+          npm install -g node-gyp@9.4.0
+          npm ci --legacy-peer-deps
+          
+      - name: Build
+        run: npm run build
+        
+      # Firebase Deploy
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TASK_EFFORT_APACH }}'
           channelId: ${{ github.event.inputs.firebase-channel || 'live' }}
           projectId: task-effort-apach
-
-          firebaseToolsVersion: '12.9.1'  # Added this line
+          firebaseToolsVersion: '12.9.1'
 
