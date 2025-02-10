@@ -1,5 +1,12 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import { 
+  getFirestore, 
+  collection, 
+  doc, 
+  setDoc, 
+  addDoc, 
+  serverTimestamp 
+} from 'firebase/firestore';
 require('dotenv').config();
 
 const collectionName = "db_pilot_test";
@@ -22,9 +29,10 @@ const db = getFirestore(app);
 
 const createFirebaseDocument = async (uniqueId) => {
   try {
-    await db.collection(collectionName).doc(uniqueId).set({
+    const docRef = doc(db, collectionName, uniqueId);
+    await setDoc(docRef, {
       uniqueId,
-      dateCreated: firebase.firestore.FieldValue.serverTimestamp(),
+      dateCreated: serverTimestamp(),
     });
     return { success: true, id: uniqueId };
   } catch (error) {
@@ -33,34 +41,32 @@ const createFirebaseDocument = async (uniqueId) => {
   }
 };
 
-// create a document in the collection with a random id
-const createFirebaseDocumentRandom = () => {
-  db.collection(collectionName).add({
-    dateCreated: new Date(),
-  });
+const createFirebaseDocumentRandom = async () => {
+  try {
+    await addDoc(collection(db, collectionName), {
+      dateCreated: new Date(),
+    });
+  } catch (error) {
+    console.error('Fehler:', error);
+    throw error;
+  }
 };
 
-const addToFirebase = (data) => {
+const addToFirebase = async (data) => {
   const uniqueId = data.uniqueId;
-
-  db.collection(collectionName)
-    .doc(uniqueId ?? "undefined")
-    .collection("data")
-    .doc(`trial_${data.trial_index}`)
-    .set(data)
+  try {
+    const docRef = doc(db, collectionName, uniqueId ?? "undefined", "data", `trial_${data.trial_index}`);
+    await setDoc(docRef, data);
+  } catch (error) {
+    console.error('Fehler:', error);
+    throw error;
+  }
 };
 
-// Export types that exists in Firestore
-// This is not always necessary, but it's used in other examples
-const { TimeStamp, GeoPoint } = firebase.firestore;
 export {
   db,
-  TimeStamp,
-  GeoPoint,
   createFirebaseDocument,
   addToFirebase,
   createFirebaseDocumentRandom,
   collectionName,
 };
-
-export default firebase;
