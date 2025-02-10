@@ -24,8 +24,9 @@ jobs:
         with:
           node-version: '16.x'
           
-      - name: Install Dependencies
+      - name: Clean Install
         run: |
+          rm -rf node_modules
           npm config set legacy-peer-deps true
           npm config set package-lock false
           npm install
