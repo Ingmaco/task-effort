@@ -24,12 +24,18 @@ jobs:
         with:
           node-version: '16.x'
           
+      - name: Load .env file for build settings
+        uses: xom9ikk/dotenv@v1.0.2
+        with:
+          path: ./env
+          mode: ${{ github.event.inputs.firebase-env || 'firebase-apach' }}
+          
       - name: Install Dependencies
         run: |
           rm -rf node_modules
           npm config set legacy-peer-deps true
           npm config set package-lock false
-          npm install -g @electron/rebuild  # Global Installation
+          npm install -g @electron/rebuild
           npm install
           
       - name: Build
