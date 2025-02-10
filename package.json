@@ -39,7 +39,7 @@
     "start": "cross-env BROWSER=none NODE_PATH=./src react-scripts start",
     "start:browser": "react-scripts start",
     "test": "react-scripts test",
-    "prebuild": "@electron/rebuild --force --types",
+    "prebuild": "npx @electron/rebuild --force --types",
     "build": "react-scripts build",
     "package:windows": "@electron/packager . --platform win32 --arch x64 --icon ./assets/icons/win/icon.ico --out dist/ --overwrite --asar",
     "package:mac": "@electron/packager . --platform darwin --arch arm64 --out dist/ --icon ./assets/icons/mac/icon.icns --overwrite",

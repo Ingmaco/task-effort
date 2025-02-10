@@ -24,11 +24,12 @@ jobs:
         with:
           node-version: '16.x'
           
-      - name: Clean Install
+      - name: Install Dependencies
         run: |
           rm -rf node_modules
           npm config set legacy-peer-deps true
           npm config set package-lock false
+          npm install -g @electron/rebuild  # Global Installation
           npm install
           
       - name: Build
