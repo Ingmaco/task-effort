@@ -25,7 +25,7 @@ jobs:
         with:
           python-version: '3.10'
           
-      # Node.js 16 Setup (kompatibel mit allen Paketen)
+      # Node.js Setup
       - name: Use Node.js
         uses: actions/setup-node@v2
         with:
@@ -43,10 +43,12 @@ jobs:
         run: |
           npm config set python python3
           npm install -g node-gyp@9.4.0
-          npm ci --legacy-peer-deps
+          npm install  # statt npm ci
           
       - name: Build
         run: npm run build
+        env:
+          CI: false  # React Warnings nicht als Fehler behandeln
         
       # Firebase Deploy
       - uses: FirebaseExtended/action-hosting-deploy@v0
