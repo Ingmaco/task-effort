@@ -1,11 +1,11 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
 require('dotenv').config();
 
 const collectionName = "db_pilot_test";
 
 // Firebase Konfiguration
-const config = {
+const firebaseConfig = {
   apiKey: process.env.REACT_APP_apiKey,
   authDomain: process.env.REACT_APP_authDomain,
   databaseURL: process.env.REACT_APP_databaseURL,
@@ -16,18 +16,9 @@ const config = {
   measurementId: process.env.REACT_APP_measurementId,
 };
 
-// Firebase Initialisierung mit Error Handling
-let db;
-try {
-  if (!firebase.apps.length) {
-    firebase.initializeApp(config);
-  }
-  db = firebase.firestore();
-  console.log('Firebase initialisiert');
-} catch (error) {
-  console.error('Firebase Fehler:', error);
-  throw error;
-}
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 const createFirebaseDocument = async (uniqueId) => {
   try {
