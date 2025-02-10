@@ -6,52 +6,37 @@ name: firebase-deploy-merge-demand
   workflow_dispatch:
     inputs:
       firebase-env:
-        description: Sufix of firebase environment file - 'firebase-lncc', 'firebase-tricamlab'
+        description: Sufix of firebase environment file
         required: false
         default: 'firebase-apach'
       firebase-channel:
-        description: Which firebase-channel to deploy to - 'live', 'qa',
+        description: Which firebase-channel to deploy to
         required: false
         default: 'qa'
+
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
-      # Python 3 Setup
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-          
-      # Node.js Setup
-      - name: Use Node.js
-        uses: actions/setup-node@v2
+
+      # Nur eine Setup-Action für beide Tools
+      - uses: actions/setup-node@v2
         with:
           node-version: '16.x'
-          
-      # Build Tools installieren
-      - name: Install build essentials
+          cache: 'npm'  # Aktiviert npm caching
+          python-version: '3.10'  # Python wird automatisch mitinstalliert
+
+      # Vereinfachte Installation
+      - name: Install Dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y build-essential
-          python -m pip install --upgrade pip setuptools wheel
-          
-      # Dependencies installieren
-      - name: Install dependencies
-        run: |
-          npm cache clean --force
-          npm config set python python3
-          npm install -g node-gyp@10.0.1
           npm install --legacy-peer-deps
           
       - name: Build
         run: npm run build
         env:
-          CI: false  # React Warnings nicht als Fehler behandeln
+          CI: false
         
-      # Firebase Deploy
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
