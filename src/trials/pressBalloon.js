@@ -165,19 +165,14 @@ const pressBalloon = (duration, blockSettings, opts) => {
         }, 50);
         function computeReward() {
           if (choice.high_effort && choice.get_reward) {
-            points = choice.value * (countPumps / choice.effort);
-            // console.log("choice.value", choice.value);
-            // console.log("countPumps", countPumps);
-            // console.log("choice.effort", choice.effort);
-            // console.log("points", points);
+            // Reduzierung auf 75% des ursprünglichen Wertes
+            points = choice.value * (countPumps / choice.effort) * 0.75;
             points = Math.round(points * 100) / 100;
-            // console.log("round(points*100)/100", points);
           } else if (!choice.get_reward) {
             points = 0;
           } else {
             points = choice.value;
           }
-
           return points;
         }
 
